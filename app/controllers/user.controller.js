@@ -103,7 +103,8 @@ exports.logIn = (req, res) => {
             role: user.role,
           };
 
-          const token = jwt.sign(payload, secretKey);
+          // const token = jwt.sign(payload, secretKey);  
+          const token = jwt.sign(payload, secretKey, { expiresIn: '60h' }); //durasi token 60 jam
 
           res.json({
             code: 200,

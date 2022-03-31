@@ -34,3 +34,17 @@ exports.authentication = async (req, res, next) => {
       })
     }
 };
+
+
+exports.authorization = async (req, res, next) => {
+  const { role } = req.user;
+
+  if (role === "admin") {
+    next();
+  } else {
+    res.json({
+      code: 403,
+      message: "Unauthorized to access this resource",
+    });
+  }
+};
