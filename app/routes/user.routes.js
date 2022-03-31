@@ -1,6 +1,9 @@
+
 module.exports = (app) => {
   const posts = require('../controllers/user.controller');
   const router = require('express').Router();
+  const auth = require('../middlewares/authentication');
+  router.use(auth.authentication);
 
   router.get('/', posts.findAll);
   router.post('/', posts.create);

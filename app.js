@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
+const dotenv = require('dotenv');
 
+dotenv.config();
 const app = express();
 
 app.use(express.json());
@@ -29,6 +31,7 @@ app.get('/', (req, res) => {
 
 require('./app/routes/post.routes')(app);
 require('./app/routes/user.routes')(app);
+require('./app/routes/auth.routes')(app);
 // running server
 const PORT = 8000;
 app.listen(PORT, () => {
