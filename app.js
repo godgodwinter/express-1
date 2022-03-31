@@ -27,7 +27,8 @@ app.get('/', (req, res) => {
   res.json({ message: 'Welcome to express server222asd' });
 });
 
-require("./app/routes/post.routes.js")(app);
+require('./app/routes/post.routes')(app);
+require('./app/routes/user.routes')(app);
 // running server
 const PORT = 8000;
 app.listen(PORT, () => {
