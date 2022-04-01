@@ -99,8 +99,12 @@ exports.logIn = (req, res) => {
 
         if (hashed) {
           const payload = {
+            name: user.name,
+            username: user.username,
             email: user.email,
             role: user.role,
+            nomerinduk: user.nomerinduk,
+            phone: user.phone,
           };
 
           // const token = jwt.sign(payload, secretKey);

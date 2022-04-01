@@ -32,6 +32,7 @@ app.get('/', (req, res) => {
 
 require('./app/routes/post.routes')(app);
 require('./app/routes/user.routes')(app);
+require('./app/routes/tapel.routes')(app);
 require('./app/routes/auth.routes')(app);
 // running server
 const PORT = 8000;

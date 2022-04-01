@@ -3,8 +3,8 @@ module.exports = (app) => {
   const posts = require('../controllers/user.controller');
   const router = require('express').Router();
   const auth = require('../middlewares/authentication');
+  //khusus login
   router.use(auth.authentication);
-//khusus login
   router.get('/', posts.findAll);
   router.post('/', posts.create);
   //khusus admin
