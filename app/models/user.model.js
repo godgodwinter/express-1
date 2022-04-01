@@ -16,13 +16,13 @@ module.exports = (mongoose) => {
       },
       username: {
         type: String,
-        required: [true, 'nama harus diisi'],
+        required: [true, 'username harus diisi'],
         maxlength: [225, 'panjang username harus antara 3 - 225 karakter'],
         minlength: [3, 'panjang username harus antara 3 - 225 karakter'],
       },
       nomerinduk: {
         type: String,
-        required: [true, 'nama harus diisi'],
+        required: [false, 'nomerinduk harus diisi'],
         maxlength: [225, 'panjang nomerinduk harus antara 3 - 225 karakter'],
         minlength: [3, 'panjang nomerinduk harus antara 3 - 225 karakter'],
       },
