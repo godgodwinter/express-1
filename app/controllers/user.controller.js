@@ -18,7 +18,7 @@ exports.findAll = (req, res) => {
 };
 
 exports.create = (req, res) => {
-  const user = new User({
+  const data = new User({
     name: req.body.name,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, HASH_ROUND),
@@ -27,7 +27,7 @@ exports.create = (req, res) => {
     nomerinduk: req.body.nomerinduk,
   });
 
-  user.save(user)
+  data.save(data)
     .then((result) => {
       res.send(result);
     }).catch((err) => {

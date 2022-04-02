@@ -10,5 +10,6 @@ db.url = dbConfig.url;
 db.posts = require('./post.model')(mongoose);
 db.users = require('./user.model')(mongoose);
 db.tapels = require('./tapel.model')(mongoose);
+db.kelas = require('./kelas.model')(mongoose);
 
 module.exports = db;

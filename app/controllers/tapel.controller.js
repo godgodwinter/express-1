@@ -14,11 +14,12 @@ exports.findAll = (req, res) => {
 };
 
 exports.create = (req, res) => {
-  const tapel = new Tapel({
+  const data = new Tapel({
     name: req.body.name,
+    status: req.body.status,
   });
 
-  tapel.save(tapel)
+  data.save(data)
     .then((result) => {
       res.send(result);
     }).catch((err) => {

@@ -30,10 +30,11 @@ app.get('/', (req, res) => {
   res.json({ message: 'Welcome to express server222asd' });
 });
 
+require('./app/routes/auth.routes')(app);
 require('./app/routes/post.routes')(app);
 require('./app/routes/user.routes')(app);
 require('./app/routes/tapel.routes')(app);
-require('./app/routes/auth.routes')(app);
+require('./app/routes/kelas.routes')(app);
 // running server
 const PORT = 8000;
 app.listen(PORT, () => {
