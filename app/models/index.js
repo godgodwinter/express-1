@@ -15,5 +15,6 @@ db.siswa = require('./siswa.model')(mongoose);
 db.mapel = require('./mapel.model')(mongoose);
 db.banksoal = require('./banksoal.model')(mongoose);
 db.paketsoal = require('./paketsoal.model')(mongoose);
+db.ujian = require('./ujian.model')(mongoose);
 
 module.exports = db;

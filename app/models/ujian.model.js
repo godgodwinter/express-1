@@ -3,26 +3,32 @@ const uniqueValidator = require('mongoose-unique-validator');
 module.exports = (mongoose) => {
   const dataSchema = mongoose.Schema(
     {
-      name: {
+      date: {
+        type: Date,
+      },
+      waktu: {
+        type: String, //berapa jam ? 60mnt 90mnt
+      },
+      pengawas: {
         type: String,
         required: [true, 'name harus diisi'],
         maxlength: [100, 'panjang name harus antara 1 - 100 karakter'],
         minlength: [1, 'panjang name harus antara 1 - 100 karakter'],
-        unique: true,
       },
-      kkm: {
-        type: Number,
-      },
-      kelas: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Kelas' }],
-      mapel: [{ type: mongoose.Schema.Types.ObjectId, ref: 'mapel' }],
-      soal: [{
-        kodesoal: String, //uuid
-        tipesoal: String,
-        pertanyaan: String,
-        pilihanJawaban: [{
-          kodejawaban: String, //abcde
-          jawaban: String,
-          statusJawaban: Boolean,
+      paketsoal: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Paketsoal' }],
+      peserta: [{
+        siswa: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Siswa' }],
+        hasil: {
+          type: Number,
+        },
+        rekapSoal: [{
+          kodesoal: String, //uuid
+          tipesoal: String,
+          pertanyaan: String,
+          pilihanJawaban: [{
+            jawaban: String,
+            statusJawaban: Boolean,
+          }],
         }],
       }],
       status: {
@@ -40,6 +46,6 @@ module.exports = (mongoose) => {
     Object.id = _id;
     return Object;
   });
-  const Paketsoal = mongoose.model('Paketsoal', dataSchema);
-  return Paketsoal;
+  const Ujian = mongoose.model('Ujian', dataSchema);
+  return Ujian;
 };
