@@ -35,6 +35,7 @@ require('./app/routes/post.routes')(app);
 require('./app/routes/user.routes')(app);
 require('./app/routes/tapel.routes')(app);
 require('./app/routes/kelas.routes')(app);
+require('./app/routes/siswa.routes')(app);
 // running server
 const PORT = 8000;
 app.listen(PORT, () => {

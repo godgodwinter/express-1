@@ -1,7 +1,6 @@
 const db = require('../models');
 
 const Kelas = db.kelas;
-const Kelas2 = db.kelas;
 
 exports.findAll = (req, res) => {
   Kelas.find()

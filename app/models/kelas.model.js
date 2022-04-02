@@ -24,6 +24,7 @@ module.exports = (mongoose) => {
         minlength: [1, 'panjang suffix harus antara 1 - 10 karakter'],
         unique: false,
       },
+      // siswa: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Siswa' }],
       status: {
         type: String,
         enum: ['Y', 'N'],
