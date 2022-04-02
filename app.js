@@ -38,6 +38,7 @@ require('./app/routes/kelas.routes')(app);
 require('./app/routes/siswa.routes')(app);
 require('./app/routes/mapel.routes')(app);
 require('./app/routes/banksoal.routes')(app);
+require('./app/routes/paketsoal.routes')(app);
 // running server
 const PORT = 8000;
 app.listen(PORT, () => {
