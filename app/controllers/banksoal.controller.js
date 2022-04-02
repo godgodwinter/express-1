@@ -1,34 +1,27 @@
 const db = require('../models');
 
-const Mapel = db.mapel;
+const Banksoal = db.banksoal;
 
 exports.findAll = (req, res) => {
-  // Mapel.aggregate([{
-  //   $lookup: {
-  //     from: 'kelas',
-  //     localField: 'kelasId',
-  //     foreignField: 'id',
-  //     as: 'kelas',
-  //   },
-  // }, {
-  //   $unwind: '$kelasId',
-  // }])
-  Mapel
+  Banksoal
     .find()
     .populate('kelas')
     .then((result) => {
       res.send(result);
     }).catch((err) => {
       res.status(500).send({
-        message: err.message || 'Some error while retrieving Mapel',
+        message: err.message || 'Some error while retrieving Banksoal',
       });
     });
 };
 
 exports.create = (req, res) => {
-  const data = new Mapel({
+  const data = new Banksoal({
     name: req.body.name,
     kelas: req.body.kelas,
+    mapel: req.body.mapel,
+    kkm: req.body.kkm,
+    soal: req.body.soal,
     status: req.body.status,
 
   });
@@ -38,34 +31,34 @@ exports.create = (req, res) => {
       res.send(result);
     }).catch((err) => {
       res.status(409).send({
-        message: err.message || 'Some error while creating Mapel',
+        message: err.message || 'Some error while creating Banksoal',
       });
     });
 };
 
 exports.findOne = (req, res) => {
   const { id } = req.params;
-  Mapel.findById(id)
+  Banksoal.findById(id)
     .then((result) => {
       res.send(result);
     }).catch((err) => {
       res.status(500).send({
-        message: err.message || 'Some error while show Mapel',
+        message: err.message || 'Some error while show Banksoal',
       });
     });
 };
 
 exports.update = (req, res) => {
   const { id } = req.params;
-  Mapel.findByIdAndUpdate(id, req.body)
+  Banksoal.findByIdAndUpdate(id, req.body)
     .then((result) => {
       if (!result) {
         res.status(404).send({
-          message: `Mapel not found with id ${id}`,
+          message: `Banksoal not found with id ${id}`,
         });
       } else {
         res.send({
-          message: 'Mapel updated successfully',
+          message: 'Banksoal updated successfully',
         });
       }
     }).catch((err) => {
@@ -77,20 +70,20 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const { id } = req.params;
-  Mapel.findByIdAndRemove(id)
+  Banksoal.findByIdAndRemove(id)
     .then((result) => {
       if (!result) {
         res.status(404).send({
-          message: `Mapel not found with id ${id}`,
+          message: `Banksoal not found with id ${id}`,
         });
       } else {
         res.send({
-          message: 'Mapel deleted successfully ',
+          message: 'Banksoal deleted successfully ',
         });
       }
     }).catch((err) => {
       res.status(409).send({
-        message: err.message || 'Some error while deleting Mapel',
+        message: err.message || 'Some error while deleting Banksoal',
       });
     });
 };

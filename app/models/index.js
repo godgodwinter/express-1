@@ -13,5 +13,6 @@ db.tapels = require('./tapel.model')(mongoose);
 db.kelas = require('./kelas.model')(mongoose);
 db.siswa = require('./siswa.model')(mongoose);
 db.mapel = require('./mapel.model')(mongoose);
+db.banksoal = require('./banksoal.model')(mongoose);
 
 module.exports = db;

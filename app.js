@@ -6,7 +6,7 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 express.urlencoded({ extended: true });
 
 // settings database
@@ -37,6 +37,7 @@ require('./app/routes/tapel.routes')(app);
 require('./app/routes/kelas.routes')(app);
 require('./app/routes/siswa.routes')(app);
 require('./app/routes/mapel.routes')(app);
+require('./app/routes/banksoal.routes')(app);
 // running server
 const PORT = 8000;
 app.listen(PORT, () => {
