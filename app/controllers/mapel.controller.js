@@ -1,9 +1,9 @@
 const db = require('../models');
 
-const Siswa = db.siswa;
+const Mapel = db.mapel;
 
 exports.findAll = (req, res) => {
-  // Siswa.aggregate([{
+  // Mapel.aggregate([{
   //   $lookup: {
   //     from: 'kelas',
   //     localField: 'kelasId',
@@ -13,20 +13,20 @@ exports.findAll = (req, res) => {
   // }, {
   //   $unwind: '$kelasId',
   // }])
-  Siswa
+  Mapel
     .find()
     .populate('kelas')
     .then((result) => {
       res.send(result);
     }).catch((err) => {
       res.status(500).send({
-        message: err.message || 'Some error while retrieving Siswa',
+        message: err.message || 'Some error while retrieving Mapel',
       });
     });
 };
 
 exports.create = (req, res) => {
-  const data = new Siswa({
+  const data = new Mapel({
     name: req.body.name,
     nis: req.body.nis,
     kelas: req.body.kelas,
@@ -39,34 +39,34 @@ exports.create = (req, res) => {
       res.send(result);
     }).catch((err) => {
       res.status(409).send({
-        message: err.message || 'Some error while creating Siswa',
+        message: err.message || 'Some error while creating Mapel',
       });
     });
 };
 
 exports.findOne = (req, res) => {
   const { id } = req.params;
-  Siswa.findById(id)
+  Mapel.findById(id)
     .then((result) => {
       res.send(result);
     }).catch((err) => {
       res.status(500).send({
-        message: err.message || 'Some error while show Siswa',
+        message: err.message || 'Some error while show Mapel',
       });
     });
 };
 
 exports.update = (req, res) => {
   const { id } = req.params;
-  Siswa.findByIdAndUpdate(id, req.body)
+  Mapel.findByIdAndUpdate(id, req.body)
     .then((result) => {
       if (!result) {
         res.status(404).send({
-          message: `Siswa not found with id ${id}`,
+          message: `Mapel not found with id ${id}`,
         });
       } else {
         res.send({
-          message: 'Siswa updated successfully',
+          message: 'Mapel updated successfully',
         });
       }
     }).catch((err) => {
@@ -78,20 +78,20 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const { id } = req.params;
-  Siswa.findByIdAndRemove(id)
+  Mapel.findByIdAndRemove(id)
     .then((result) => {
       if (!result) {
         res.status(404).send({
-          message: `Siswa not found with id ${id}`,
+          message: `Mapel not found with id ${id}`,
         });
       } else {
         res.send({
-          message: 'Siswa deleted successfully ',
+          message: 'Mapel deleted successfully ',
         });
       }
     }).catch((err) => {
       res.status(409).send({
-        message: err.message || 'Some error while deleting Siswa',
+        message: err.message || 'Some error while deleting Mapel',
       });
     });
 };
