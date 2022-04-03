@@ -14,6 +14,8 @@ db.kelas = require('./kelas.model')(mongoose);
 db.siswa = require('./siswa.model')(mongoose);
 db.mapel = require('./mapel.model')(mongoose);
 db.banksoal = require('./banksoal.model')(mongoose);
+db.soal = require('./soal.model')(mongoose);
+db.pilihanjawaban = require('./pilihanjawaban.model')(mongoose);
 db.paketsoal = require('./paketsoal.model')(mongoose);
 db.ujian = require('./ujian.model')(mongoose);
 

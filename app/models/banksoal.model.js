@@ -14,15 +14,7 @@ module.exports = (mongoose) => {
         type: Number,
       },
       kelas: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Kelas' }],
-      mapel: [{ type: mongoose.Schema.Types.ObjectId, ref: 'mapel' }],
-      soal: [{
-        tipesoal: String,
-        pertanyaan: String,
-        pilihanJawaban: [{
-          jawaban: String,
-          statusJawaban: Boolean,
-        }],
-      }],
+      mapel: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Mapel' }],
       status: {
         type: String,
         enum: ['Y', 'N'],

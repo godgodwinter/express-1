@@ -1,29 +1,26 @@
 const db = require('../models');
 
-const Banksoal = db.banksoal;
+const Soal = db.soal;
 
 exports.findAll = (req, res) => {
-  Banksoal
+  Soal
     .find()
-    .populate('kelas')
-    .populate('mapel')
+    .populate('banksoal')
     .then((result) => {
       res.send(result);
     }).catch((err) => {
       res.status(500).send({
-        message: err.message || 'Some error while retrieving Banksoal',
+        message: err.message || 'Some error while retrieving Soal',
       });
     });
 };
 
 exports.create = (req, res) => {
-  const data = new Banksoal({
-    name: req.body.name,
-    kelas: req.body.kelas,
-    mapel: req.body.mapel,
-    kkm: req.body.kkm,
-    soal: req.body.soal,
-    status: req.body.status,
+  const data = new Soal({
+    pertanyaan: req.body.pertanyaan,
+    tipesoal: req.body.tipesoal,
+    banksoal: req.body.banksoal,
+    photo: req.body.photo,
 
   });
 
@@ -32,36 +29,35 @@ exports.create = (req, res) => {
       res.send(result);
     }).catch((err) => {
       res.status(409).send({
-        message: err.message || 'Some error while creating Banksoal',
+        message: err.message || 'Some error while creating Soal',
       });
     });
 };
 
 exports.findOne = (req, res) => {
   const { id } = req.params;
-  Banksoal.findById(id)
-  .populate('kelas')
-  .populate('mapel')
+  Soal.findById(id)
+  .populate('banksoal')
     .then((result) => {
       res.send(result);
     }).catch((err) => {
       res.status(500).send({
-        message: err.message || 'Some error while show Banksoal',
+        message: err.message || 'Some error while show Soal',
       });
     });
 };
 
 exports.update = (req, res) => {
   const { id } = req.params;
-  Banksoal.findByIdAndUpdate(id, req.body)
+  Soal.findByIdAndUpdate(id, req.body)
     .then((result) => {
       if (!result) {
         res.status(404).send({
-          message: `Banksoal not found with id ${id}`,
+          message: `Soal not found with id ${id}`,
         });
       } else {
         res.send({
-          message: 'Banksoal updated successfully',
+          message: 'Soal updated successfully',
         });
       }
     }).catch((err) => {
@@ -73,20 +69,20 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const { id } = req.params;
-  Banksoal.findByIdAndRemove(id)
+  Soal.findByIdAndRemove(id)
     .then((result) => {
       if (!result) {
         res.status(404).send({
-          message: `Banksoal not found with id ${id}`,
+          message: `Soal not found with id ${id}`,
         });
       } else {
         res.send({
-          message: 'Banksoal deleted successfully ',
+          message: 'Soal deleted successfully ',
         });
       }
     }).catch((err) => {
       res.status(409).send({
-        message: err.message || 'Some error while deleting Banksoal',
+        message: err.message || 'Some error while deleting Soal',
       });
     });
 };
