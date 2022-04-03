@@ -37,7 +37,7 @@ exports.create = (req, res) => {
 exports.findOne = (req, res) => {
   const { id } = req.params;
   Soal.findById(id)
-  .populate('banksoal')
+    .populate('banksoal')
     .then((result) => {
       res.send(result);
     }).catch((err) => {

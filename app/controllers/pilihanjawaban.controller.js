@@ -37,7 +37,7 @@ exports.create = (req, res) => {
 exports.findOne = (req, res) => {
   const { id } = req.params;
   Pilihanjawaban.findById(id)
-  .populate('soal')
+    .populate('soal')
     .then((result) => {
       res.send(result);
     }).catch((err) => {

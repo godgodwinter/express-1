@@ -11,6 +11,6 @@ module.exports = (app) => {
   router.get('/:id', banksoal.findOne);
   router.put('/:id', banksoal.update);
   router.delete('/:id', banksoal.delete);
-
+  router.get('/:id/soal', banksoal.findSoalById);
   app.use('/api/banksoal', router);
 };
