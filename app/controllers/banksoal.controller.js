@@ -101,10 +101,8 @@ exports.findSoalById = (req, res) => {
     .find({ banksoal: id })
     .populate('banksoal')
     .then((result) => {
-      // res.send(result);
-      // res.send('test')
       let tempData = {};
-
+      // https://www.delftstack.com/howto/javascript/javascript-wait-for-function-to-finish/#:~:text=we%20received%20Rejected-,Use%20async%2Fawait%20to%20Wait%20for%20a%20Function%20to%20Finish,is%20to%20use%20async%2Fwait%20.
       const tempResult = [];
       let countJwb = 0;
       async function sendResult() {
@@ -112,7 +110,7 @@ exports.findSoalById = (req, res) => {
           //  countJwb = await getLength(item._id);
           await Pilihanjawaban.find({ soal: item._id }).then((resultPilihan) => {
             countJwb = resultPilihan.length;
-            console.log(resultPilihan.length);
+            // console.log(resultPilihan.length);
           });
 
           tempData = {
@@ -124,7 +122,7 @@ exports.findSoalById = (req, res) => {
           };
 
           tempResult.push(tempData);
-          console.log(tempResult);
+          // console.log(tempResult);
         }
         return tempResult;
       }
