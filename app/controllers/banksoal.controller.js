@@ -101,30 +101,39 @@ exports.findSoalById = (req, res) => {
     .find({ banksoal: id })
     .populate('banksoal')
     .then((result) => {
-      res.send(result);
-      // const sendResult = [];
-      // let tempData = {};
-      // const funGetData = () => {
-      //   const tempResult = [];
-      //   result.map((item) => {
-      //     tempData = {
-      //       id: item.id,
-      //       pertanyaan: item.pertanyaan,
-      //       tipesoal: item.tipesoal,
-      //       banksoal: item.banksoal,
-      //       countJawaban: 0,
-      //     };
-      //     Pilihanjawaban.find({ soal: item._id }).then((resultPilihan) => {
-      //       tempData.countJawaban = resultPilihan.length;
-      //       console.log(resultPilihan.length);
-      //     });
+      // res.send(result);
+      // res.send('test')
+      let tempData = {};
 
-      //     tempResult.push(tempData);
-      //   });
-      //   return tempResult;
-      // };
-      // const finalResult = funGetData();
-      // res.send(finalResult);
+      const tempResult = [];
+      let countJwb = 0;
+      async function sendResult() {
+        for (const item of result) {
+          //  countJwb = await getLength(item._id);
+          await Pilihanjawaban.find({ soal: item._id }).then((resultPilihan) => {
+            countJwb = resultPilihan.length;
+            console.log(resultPilihan.length);
+          });
+
+          tempData = {
+            id: item.id,
+            pertanyaan: item.pertanyaan,
+            tipesoal: item.tipesoal,
+            banksoal: item.banksoal,
+            countJawaban: countJwb,
+          };
+
+          tempResult.push(tempData);
+          console.log(tempResult);
+        }
+        return tempResult;
+      }
+      async function doSentResult() {
+        await sendResult();
+        res.send(tempResult);
+      }
+
+      doSentResult();
     }).catch((err) => {
       res.status(500).send({
         message: err.message || 'Some error while retrieving Banksoal',
